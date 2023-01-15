@@ -1,14 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+	import DescriptionCard from './components/DescriptionCard.vue';
+</script>
 
 <template>
 	<div class="app-container">
-		<nav class="navbar box">
-			<h1 class="">DND</h1>
-			<div class="links">
-				<router-link :to="{ name: 'create-character' }" class="link">Create character</router-link>
-				<router-link :to="{ name: 'interactive-character-creator' }" class="link">Classes</router-link>
-			</div>
-		</nav>
+		<DescriptionCard>
+			<nav class="navbar">
+				<h1 class="">DND</h1>
+				<div class="links">
+					<router-link :to="{ name: 'create-character' }" class="link">Create character</router-link>
+					<router-link :to="{ name: 'interactive-character-creator' }" class="link">Classes</router-link>
+				</div>
+			</nav>
+		</DescriptionCard>
 		<main class="main">
 			<router-view></router-view>
 		</main>

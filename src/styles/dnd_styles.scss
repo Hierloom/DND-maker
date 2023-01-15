@@ -1,14 +1,14 @@
 
-$background: var(--color-gray-700);
-$border: var(--color-gray-700);
+$background: var(--color-gray-800);
+$border: var(--color-yellow-400);
 .box {
     position: relative;
     background-color: $background;
     padding: 5px;
-    border: 2px solid ;
+    border: 2px solid $border;
 
     &:before,
-    &:after {
+    &:after { 
         content: '¤';
         position: absolute;
         width: 20px;
