@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import { useTheme } from 'vuetify';
-const theme = useTheme();
-const sideBarOpen = ref(false);
+import { ref, computed } from 'vue'
+import { useTheme } from 'vuetify'
+const theme = useTheme()
+const sideBarOpen = ref(false)
 
 const themeIcon = computed<string>(() => {
-    return theme.global.current.value.dark ? 'light_mode' : 'dark_mode';
-});
+    return theme.global.current.value.dark ? 'light_mode' : 'dark_mode'
+})
 
 const menuOptions = [
     {
@@ -21,12 +21,10 @@ const menuOptions = [
         description: '',
         to: { name: 'interactive-character-creator' },
     },
-];
+]
 
 function toggleTheme() {
-    theme.global.name.value = theme.global.current.value.dark
-        ? 'light'
-        : 'dark';
+    theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
 }
 </script>
 
@@ -55,11 +53,10 @@ function toggleTheme() {
                 </v-list-item>
             </v-list>
         </v-navigation-drawer>
-        <v-container>
-            <v-main>
-                <router-view></router-view>
-            </v-main>
-        </v-container>
+
+        <v-main class="h-screen">
+            <router-view></router-view>
+        </v-main>
     </v-app>
 </template>
 

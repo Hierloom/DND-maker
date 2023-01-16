@@ -1,8 +1,8 @@
 <template>
-    <canvas ref="chartContainer" id="myChart"></canvas>
+    <!-- <canvas ref="chartContainer" id="myChart"></canvas> -->
 </template>
 <script lang="ts" setup>
-import Chart, { type ChartOptions, type ChartData, type ChartConfiguration, type ChartTypeRegistry } from 'chart.js/auto';
+/* import Chart, { type ChartOptions, type ChartData, type ChartConfiguration, type ChartTypeRegistry } from 'chart.js/auto';
 import { ref, onMounted, computed, watch } from 'vue';
     const chartContainer = ref(null);
     let chart: Chart;
@@ -38,5 +38,5 @@ import { ref, onMounted, computed, watch } from 'vue';
         const ctx = (chartContainer.value as unknown)
         chart = new Chart(ctx as HTMLCanvasElement, options.value);
         emit('init', chart)
-    })
+    }) */
 </script>

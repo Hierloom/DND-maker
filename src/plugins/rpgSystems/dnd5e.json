@@ -12,5 +12,37 @@
             "value": "standard-array",
             "label": "Standard Array"
         }
+    ],
+    "attributes": [
+        {
+            "name": "Strength",
+            "modifier": 0,
+            "value": 10
+        },
+        {
+            "name": "Dexterity",
+            "modifier": 0,
+            "value": 10
+        },
+        {
+            "name": "Constitution",
+            "modifier": 0,
+            "value": 10
+        },
+        {
+            "name": "Intelligence",
+            "modifier": 0,
+            "value": 10
+        },
+        {
+            "name": "Wisdom",
+            "modifier": 0,
+            "value": 10
+        },
+        {
+            "name": "Charisma",
+            "modifier": 0,
+            "value": 10
+        }
     ]
 }
