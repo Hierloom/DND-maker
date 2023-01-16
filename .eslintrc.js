@@ -5,6 +5,9 @@ module.exports = {
         'eslint:recommended',
         'plugin:vue/vue3-recommended',
     ],
+    "plugins": [
+        "json-format"
+    ],
     rules: {
         // override/add rules settings here, such as:
         // 'vue/no-unused-vars': 'error'

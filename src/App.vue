@@ -1,107 +1,66 @@
 <script setup lang="ts">
-import { ref, h, Component, computed } from 'vue';
-import {
-    NSpace,
-    NButton,
-    NLayout,
-    NLayoutHeader,
-    NMenu,
-    NConfigProvider,
-} from 'naive-ui';
-import { RouterLink } from 'vue-router';
-import { darkTheme, NIcon } from 'naive-ui';
-import { DarkModeFilled, WbSunnyOutlined } from '@vicons/material';
-import type { MenuOption } from 'naive-ui';
+import { ref, computed } from 'vue';
+import { useTheme } from 'vuetify';
+const theme = useTheme();
+const sideBarOpen = ref(false);
 
-const inverted = ref(false);
-const lightThemeToggled = ref(false);
-
-const theme = computed<typeof darkTheme | null>(() => {
-    return lightThemeToggled.value ? null : darkTheme;
+const themeIcon = computed<string>(() => {
+    return theme.global.current.value.dark ? 'light_mode' : 'dark_mode';
 });
 
-const menuOptions: MenuOption[] = [
+const menuOptions = [
     {
-        label: () =>
-            h(
-                RouterLink,
-                { to: { name: 'create-character' } },
-                { default: () => 'Create character' }
-            ),
-        key: 'create-character',
+        title: 'Create character',
+        id: 'create-character',
+        description: '',
+        to: { name: 'create-character' },
     },
     {
-        label: () =>
-            h(
-                RouterLink,
-                { to: { name: 'interactive-character-creator' } },
-                { default: () => 'Classes' }
-            ),
-        key: 'interactive-character-creator',
+        title: 'Classes',
+        id: 'interactive-character-creator',
+        description: '',
+        to: { name: 'interactive-character-creator' },
     },
 ];
 
-function renderIcon(icon: Component) {
-    return () => h(NIcon, null, { default: () => h(icon) });
-}
-
 function toggleTheme() {
-    lightThemeToggled.value = !lightThemeToggled.value;
+    theme.global.name.value = theme.global.current.value.dark
+        ? 'light'
+        : 'dark';
 }
 </script>
 
 <template>
-    <NConfigProvider :theme="theme">
-        <NSpace vertical>
-            <NLayout style="height: 100vh">
-                <NLayout-header>
-                    <nav class="navbar">
-                        <NButton tag="a" text size="small">DND</NButton>
-                        <NMenu mode="horizontal" :options="menuOptions" />
-                        <NButton size="tiny" circle @click="toggleTheme">
-                            <template #icon>
-                                <NIcon>
-                                    <WbSunnyOutlined v-if="lightThemeToggled" />
-                                    <DarkModeFilled v-else />
-                                </NIcon>
-                            </template>
-                        </NButton>
-                    </nav>
-                </NLayout-header>
-                <NLayout class="main">
-                    <router-view></router-view>
-                </NLayout>
-            </NLayout>
-        </NSpace>
-    </NConfigProvider>
+    <v-app>
+        <v-app-bar :elevation="1">
+            <v-app-bar-nav-icon
+                variant="text"
+                @click.stop="sideBarOpen = !sideBarOpen"
+            ></v-app-bar-nav-icon>
+            <v-toolbar-title>My files</v-toolbar-title>
+            <v-btn variant="text" :icon="themeIcon" @click="toggleTheme" />
+        </v-app-bar>
+
+        <v-navigation-drawer v-model="sideBarOpen" location="left" temporary>
+            <v-list :lines="false" density="compact" nav>
+                <v-list-item
+                    v-for="link in menuOptions"
+                    :key="link.id"
+                    :value="link"
+                    :to="link.to"
+                    active-color="primary"
+                >
+                    <v-list-item-title v-text="link.title" />
+                    <v-list-item-subtitle v-text="link.description" />
+                </v-list-item>
+            </v-list>
+        </v-navigation-drawer>
+        <v-container>
+            <v-main>
+                <router-view></router-view>
+            </v-main>
+        </v-container>
+    </v-app>
 </template>
 
-<style lang="scss">
-$navbarHeight: 50px;
-
-.app-container {
-    height: 100%;
-}
-
-.navbar {
-    height: $navbarHeight;
-    max-height: $navbarHeight;
-    padding: var(--padding-2);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.links {
-    display: flex;
-
-    & > .link {
-        margin-right: 1rem;
-    }
-}
-
-.main {
-    height: calc(100% - $navbarHeight);
-    max-height: calc(100% - $navbarHeight);
-}
-</style>
+<style lang="scss"></style>

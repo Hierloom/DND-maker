@@ -1,0 +1,16 @@
+{
+    "determinationTypes": [
+        {
+            "value": "point-buy",
+            "label": "Point buy"
+        },
+        {
+            "value": "roll",
+            "label": "Roll 4d6 and drop the lowest"
+        },
+        {
+            "value": "standard-array",
+            "label": "Standard Array"
+        }
+    ]
+}
