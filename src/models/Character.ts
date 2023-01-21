@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
+import Class from './Class';
 
 export default class Character {
     id: string;
-    name: string;
     bio: Bio;
     stats: Stats;
     currency: Currency[];
@@ -10,9 +10,9 @@ export default class Character {
     maxLevel: number;
     experiencePoints: number;
     background: Background | Background[];
+    class: Class | null;
     alignment: Alignment | Alignment[];
     attributes: Attribute[];
-    spells: Spell[];
     feats: Feat[];
     token: string;
     inspiration: {
@@ -23,8 +23,8 @@ export default class Character {
 
     constructor() {
         this.id = uuidv4();
-        this.name = '';
         this.bio = {
+            name: '',
             age: 0,
             size: '',
             height: 0,
@@ -45,10 +45,6 @@ export default class Character {
                 fails: 0,
             },
             exhaustionLevel: 0,
-            hitDice: {
-                type: 4,
-                value: 0,
-            }
         };
         this.attributes = [];
         this.currency = [];
@@ -57,7 +53,7 @@ export default class Character {
         this.experiencePoints = 0;
         this.background = [];
         this.alignment = [];
-        this.spells = [];
+        this.class = null;
         this.feats = [];
         this.token = '';
         this.inspiration = {
@@ -65,7 +61,6 @@ export default class Character {
             value: 0,
         };
         this.proficiencyBonus = 0;
-
     }
 }
 
@@ -80,7 +75,6 @@ export interface Stats {
         fails: number;
     },
     exhaustionLevel: number;
-    hitDice: HitDice
 }
 
 export interface Speed {
@@ -133,6 +127,7 @@ export interface Feat {
 }
 
 export interface Bio {
+    name: string;
     age: number;
     size: string;
     height: number;
@@ -141,11 +136,6 @@ export interface Bio {
     eyes: string;
     skin: string;
     hair: string;
-}
-
-export interface Spell {
-    id: number;
-    name: string;
 }
 
 export interface Alignment {

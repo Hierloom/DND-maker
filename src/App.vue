@@ -5,7 +5,9 @@ const theme = useTheme()
 const sideBarOpen = ref(false)
 
 const themeIcon = computed<string>(() => {
-    return theme.global.current.value.dark ? 'light_mode' : 'dark_mode'
+    return theme.global.current.value.dark
+        ? 'mdi-lightbulb-on-outline'
+        : 'mdi-lightbulb-on'
 })
 
 const menuOptions = [

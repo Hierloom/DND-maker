@@ -13,7 +13,7 @@ const routes = [
     {
         path: '/create-character',
         name: 'create-character',
-        component: () => import('@/views/character/CharacterCreate.vue')
+        component: () => import('@/views/character/createCharacter/CreateCharacter.vue')
     },
     {
         path: '/interactive-character-creator',

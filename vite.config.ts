@@ -4,7 +4,6 @@ import vuetify from 'vite-plugin-vuetify'
 import path from 'path'
 
 // https://vitejs.dev/config/
-console.log(process.cwd());
 export default defineConfig({
     base: process.env.ELECTRON == "true" ? './' : ".",
     plugins: [
