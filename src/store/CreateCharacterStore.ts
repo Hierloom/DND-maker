@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { computed, reactive, ref } from 'vue';
+import { reactive, ref } from 'vue';
 import Character from '../models/Character';
 import { SystemData } from '../models/SystemData';
 

@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import { SystemData } from '../models/SystemData';
+import { ClassData } from '../plugins/rpgSystems/dnd5e/types/classData';
 
 export const useSystemStore = defineStore('SystemStore', () => {
     const settings = ref<SystemData | null>(null);
@@ -9,9 +10,8 @@ export const useSystemStore = defineStore('SystemStore', () => {
     async function loadSystemData() {
         settings.value = await import('../plugins/rpgSystems/dnd5e/settings.json');
 
-        const importedClasses = await import('../plugins/rpgSystems/dnd5e/classes/wizard.json');
-        console.log(importedClasses);
-        classes.value.push(importedClasses.default);
+        const importedClasses: ClassData = (await import('../plugins/rpgSystems/dnd5e/classes/wizard.json')).default;
+        classes.value.push(importedClasses);
     }
 
     async function initatePluginData() {
