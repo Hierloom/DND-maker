@@ -106,7 +106,7 @@ const steps = computed<Step[]>(() => [
                 fillDot
             >
                 {{ step.title }}
-                <template v-slot:opposite> {{ step.description }} </template>
+                <!--         <template v-slot:opposite> {{ step.description }} </template> -->
             </v-timeline-item>
         </v-timeline>
         <v-window v-model="currentStep" class="step-container">

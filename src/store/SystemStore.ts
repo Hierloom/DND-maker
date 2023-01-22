@@ -5,7 +5,7 @@ import { ClassData } from '../plugins/rpgSystems/dnd5e/types/classData';
 
 export const useSystemStore = defineStore('SystemStore', () => {
     const settings = ref<SystemData | null>(null);
-    const classes = ref<any[]>([]);
+    const classes = ref<ClassData[]>([]);
 
     async function loadSystemData() {
         settings.value = await import('../plugins/rpgSystems/dnd5e/settings.json');
